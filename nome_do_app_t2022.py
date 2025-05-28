@@ -20,12 +20,18 @@ with st.form("form_contato"):
             st.warning("Preencha todos os campos.")
 
 st.subheader("📋 Contatos cadastrados")
+
 dados = listar_contatos()
 
+st.write("DEBUG - Dados retornados:", dados)  # Linha para depuração, remova depois
+
 if dados:
-    for contato in dados:
-        nome = contato.get("nome", "Sem nome")
-        email = contato.get("email", "Sem email")
-        st.write(f"**{nome}** - {email}")
+    try:
+        for contato in dados:
+            nome = contato.get("nome", "Sem nome")
+            email = contato.get("email", "Sem email")
+            st.write(f"**{nome}** - {email}")
+    except Exception as e:
+        st.error(f"Erro ao renderizar contatos: {e}")
 else:
     st.info("Nenhum contato cadastrado.")
