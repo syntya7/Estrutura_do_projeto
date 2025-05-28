@@ -1,9 +1,8 @@
-
 import gspread
 import json
 import os
 from google.oauth2.service_account import Credentials
-import streamlit as st  # para mostrar erros no Streamlit
+import streamlit as st  # necessário para mostrar erros no Streamlit
 
 def get_client():
     scope = [
@@ -30,7 +29,6 @@ def get_sheet():
         return sheet
     except Exception as e:
         st.error(f"Erro ao acessar a planilha: {e}")
-        print("Erro detalhado no get_sheet():", e)
         return None
 
 def add_contato(nome, email):
@@ -49,7 +47,6 @@ def listar_contatos():
     if sheet:
         try:
             return sheet.get_all_records()
-        except Exception as e:
-            print("Erro ao listar contatos:", e)
+        except Exception:
             return []
     return []
