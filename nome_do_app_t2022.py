@@ -25,7 +25,7 @@ st.subheader("📋 Contatos cadastrados")
 
 dados = listar_contatos()
 
-st.write("DEBUG - Dados retornados:", dados)  # Linha para depuração, remova depois
+#st.write("DEBUG - Dados retornados:", dados)  # Linha para depuração, remova depois
 
 if dados:
     try:
